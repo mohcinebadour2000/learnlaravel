@@ -15,6 +15,10 @@ class homeController extends Controller
             ['id'=>'3','nom'=>'azizi','metier'=>'jardiner'],
         ];
 
+        // $type = "warning";
+        // $text = "text from controller";
+
+
         return view('home',compact('users'));
     }
 }

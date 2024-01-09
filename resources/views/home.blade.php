@@ -1,16 +1,27 @@
+
+
+<x-master title="Home">
+<x-alert type="warning">
+        <strong>This is text</strong>
+    </x-alert>
+
+    <x-users-table :users="$users"/>
+</x-master>
+
+
+
+
+{{-- @section('main')
+@endsection --}}
+{{-- 
 @extends('layouts.master')
 
 @section('pageName')
     Home
-@endsection
+@endsection --}}
 
 
-@section('main')
 
-    <x-users-table :users="$users"/>
-
-
-@endsection
 
     {{-- @isset($languages)
        <h1>table existe</h1>
