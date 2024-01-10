@@ -31,7 +31,7 @@ class CompteSeeder extends Seeder
 
 
 /* --------------- 2eme methode d'insertion des donnees ----------------- */
-            Compte::factory(20)->create();
+            Compte::factory(200)->create();
 /* ---------------------------------------------------------------------- */
         
 

@@ -2,7 +2,7 @@
 
 <x-master title="Home">
 <x-alert type="warning">
-        <strong>This is text</strong>
+        <strong>This is Home</strong>
     </x-alert>
 
     <x-users-table :users="$users"/>

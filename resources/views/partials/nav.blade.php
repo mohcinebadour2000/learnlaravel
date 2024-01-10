@@ -7,13 +7,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/home">home</a>
+          <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/compte">compte</a>
+          <a class="nav-link" href="{{ route('comptes.index') }}">compte</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/informations">informations</a>
+          <a class="nav-link" href="{{ route('informations.index') }}">informations</a>
         </li>
       </ul>
     </div>

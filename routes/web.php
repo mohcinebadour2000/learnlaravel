@@ -25,13 +25,17 @@ use App\Http\Controllers\informationsController;
 
 
 
-Route::get('/home', [homeController::class, 'index']);
+Route::get('/home', [homeController::class, 'index'])->name('homepage');
 
 
-Route::get('/compte', [CompteController::class, 'index']);
+Route::get('/comptes', [CompteController::class, 'index'])->name('comptes.index');
+
+Route::get('/comptes/{id}', [CompteController::class, 'show'])
+->where('id','\d+')
+->name('comptes.show');
 
 
-Route::get('/informations', [informationsController::class, 'index']);
+Route::get('/informations', [informationsController::class, 'index'])->name('informations.index');
 
 
 

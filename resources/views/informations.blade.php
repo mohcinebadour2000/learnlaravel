@@ -1,7 +1,5 @@
-@extends('layouts.master')
-@section('pageName')
-    informations
-@endsection
-@section('main')
-
-@endsection
+<x-master title="Informations">
+    <x-alert type="warning">
+            <strong>This is Informations</strong>
+        </x-alert>
+</x-master>
