@@ -30,9 +30,15 @@ Route::get('/home', [homeController::class, 'index'])->name('homepage');
 
 Route::get('/comptes', [CompteController::class, 'index'])->name('comptes.index');
 
-Route::get('/comptes/{id}', [CompteController::class, 'show'])
-->where('id','\d+')
+Route::get('/comptes/{compte}', [CompteController::class, 'show'])
+->where('compte','\d+')
 ->name('comptes.show');
+
+
+Route::get('/compte/create', [CompteController::class, 'create'])->name('comptes.create');
+
+Route::post('/compte/store', [CompteController::class, 'store'])->name('comptes.store');
+
 
 
 Route::get('/informations', [informationsController::class, 'index'])->name('informations.index');

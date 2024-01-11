@@ -15,6 +15,10 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('informations.index') }}">informations</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('comptes.create') }}">Ajouter un profile</a>
+        </li>
       </ul>
     </div>
   </div>

@@ -1,12 +1,13 @@
 <x-master title="Comptes">
+    {{-- <a class="btn btn-primary mt-2" href="{{ route('comptes.create') }}" role="button">Ajouter un profil</a> --}}
 
-  <div class="row">
-       @foreach ($comptes as $compte)
-        <x-compte-card :compte="$compte" />
-    @endforeach
-  </div>
+    <div class="row">
+        @foreach ($comptes as $compte)
+            <x-compte-card :compte="$compte" />
+        @endforeach
+    </div>
 
- 
+
     {{ $comptes->links() }}
 
 
