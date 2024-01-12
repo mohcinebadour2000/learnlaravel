@@ -6,6 +6,9 @@ use App\Models\Compte;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\CompteRequest;
+
 
 
 
@@ -45,22 +48,30 @@ class CompteController extends Controller
         return view('compte.create');
     }
 
-    public function store(Request $request){
+    public function store(CompteRequest $request){
         // dd($request->name);
         // $users = User::all();
         // Compte::create($request->post());
 
-        $request->validate([
-            'name' => 'required|string|between:3,30',
-            'email' => 'required|email|unique:comptes',
-            'biography' => 'required|string|max:255',
-            'password' => 'required|string|max:255',
-        ]);
+      // Valider les champs du formulaire
+    // $validatedData = $request->validate([
+    //     'name' => 'required|string|between:3,30',
+    //     'email' => 'required|email|unique:comptes',
+    //     'biography' => 'required|string|max:255',
+    //     'password' => 'required|between:8,50|confirmed',
+    // ]);
 
-        Compte::create([
+    // $hashedPassword = Hash::make($request->input('password'));
+
+
+    // $formFields = $request->validated();
+    // dd($formFields);
+
+    Compte::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'biography' =>  $request->input('biography'),
+            'password' => Hash::make($request->input('password')),
         ]);
 
 

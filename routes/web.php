@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\CompteController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\informationsController;
  
 // App\Http\Controllers\homeController;
@@ -26,6 +27,13 @@ use App\Http\Controllers\informationsController;
 
 
 Route::get('/home', [homeController::class, 'index'])->name('homepage');
+
+
+// ----------------------------------
+Route::get('/signin', [LoginController::class, 'show'])->name('login.show');
+
+Route::post('/signin', [LoginController::class, 'signin'])->name('signin');
+// ----------------------------------
 
 
 Route::get('/comptes', [CompteController::class, 'index'])->name('comptes.index');
@@ -104,14 +112,14 @@ Route::get('/informations', [informationsController::class, 'index'])->name('inf
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__.'/auth.php';

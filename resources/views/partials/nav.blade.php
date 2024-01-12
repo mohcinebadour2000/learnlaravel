@@ -19,6 +19,10 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('comptes.create') }}">Ajouter un profile</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('login.show') }}">Se connecter</a>
+        </li>
       </ul>
     </div>
   </div>

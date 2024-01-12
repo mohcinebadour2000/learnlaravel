@@ -13,7 +13,8 @@ class Compte extends Model
     protected $fillable = [
         'name',
         'email',
-        'biography'
+        'biography',
+        'password',
         // Add other fields that you want to allow for mass assignment
     ];
 }
