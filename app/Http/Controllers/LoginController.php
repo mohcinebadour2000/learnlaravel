@@ -29,4 +29,12 @@ class LoginController extends Controller
             ])->onlyInput('login');
         }
     }
+
+
+    public function logout(){
+        session()->flush();
+        // session::flush();
+        Auth::logout();
+        return to_route('signin')->with('success','Account deconnected.');
+    }
 }

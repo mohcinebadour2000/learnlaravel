@@ -7,7 +7,7 @@ use App\Http\Controllers\homeController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\informationsController;
- 
+
 // App\Http\Controllers\homeController;
 // use Illuminate\Support\Facades\Request;
 
@@ -33,10 +33,25 @@ Route::get('/home', [homeController::class, 'index'])->name('homepage');
 Route::get('/signin', [LoginController::class, 'show'])->name('login.show');
 
 Route::post('/signin', [LoginController::class, 'signin'])->name('signin');
+
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // ----------------------------------
 
 
 Route::get('/comptes', [CompteController::class, 'index'])->name('comptes.index');
+
+
+Route::delete('/comptes/{compte}', [CompteController::class, 'destroy'])->name('comptes.destroy');
+
+
+Route::get('/comptes/{compte}/edit', [CompteController::class, 'edit'])->name('comptes.edit');
+
+
+Route::put('/comptes/{compte}', [CompteController::class, 'update'])->name('comptes.update');
+
+
+
 
 Route::get('/comptes/{compte}', [CompteController::class, 'show'])
 ->where('compte','\d+')

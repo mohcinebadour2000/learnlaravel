@@ -1,19 +1,20 @@
 
 
 <x-master title="Home">
-<x-alert type="warning">
-        <strong>This is Home</strong>
-    </x-alert>
-
-    <x-users-table :users="$users"/>
+    <h3>Home</h3>
 </x-master>
 
 
 
+{{-- <x-alert type="warning">
+        <strong>This is Home</strong>
+    </x-alert>
+
+    <x-users-table :users="$users"/> --}}
 
 {{-- @section('main')
 @endsection --}}
-{{-- 
+{{--
 @extends('layouts.master')
 
 @section('pageName')
@@ -41,7 +42,7 @@
 @endswitch --}}
 
 
-{{-- 
+{{--
 
     @if (count($languages) > 0)
           <table border="1" width="100%">
@@ -51,7 +52,7 @@
             </tr>
         </thead>
         <tbody>
-            
+
 
             @foreach($languages as $item)
                 <tr>
@@ -59,7 +60,7 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>      
+    </table>
     @else
         <h3>no table to show</h3>
     @endif --}}

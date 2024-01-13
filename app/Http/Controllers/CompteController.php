@@ -20,7 +20,7 @@ class CompteController extends Controller
     //    $comptes = Compte::all();
         //   $comptes = DB::table('comptes')->simplePaginate(15);
 
-        
+
        $comptes = Compte::paginate(9);
 
         return view('compte.comptes',compact('comptes'));
@@ -77,5 +77,27 @@ class CompteController extends Controller
 
         return redirect()->route('comptes.index')->with('success','Votre compte est bien créé');
     }
-    
+
+
+    public function destroy(Compte $compte){
+        // $compte = $request->compte;
+        $compte->delete();
+        return redirect()->route('comptes.index')->with('success','Card est bien supprimée');
+    }
+
+    public function edit(Compte $compte){
+        return view('compte.edit',compact('compte'));
+    }
+
+
+    public function update(CompteRequest $request,Compte $compte){
+
+        $formFields = $request->validated();
+        $formFields['password'] = Hash::make($request->input('password'));
+        $compte->fill($formFields)->save();
+        return redirect()->route('comptes.show',$compte->id)->with('success','Compte est bien modifiée.');
+    }
+
+
+
 }

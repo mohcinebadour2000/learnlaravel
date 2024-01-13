@@ -23,7 +23,8 @@ class CompteRequest extends FormRequest
     {
         return [
             'name' => 'required|string|between:3,30',
-            'email' => 'required|email|unique:comptes',
+            // 'email' => 'required|email|unique:comptes',
+            'email' => 'required|email',
             'biography' => 'required|string|max:255',
             'password' => 'required|between:8,50|confirmed',
         ];
