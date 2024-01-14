@@ -33,7 +33,7 @@ class CompteSeeder extends Seeder
 /* --------------- 2eme methode d'insertion des donnees ----------------- */
             // Compte::factory(200)->create();
 /* ---------------------------------------------------------------------- */
-        
+
 
 /* --------------- 3eme methode d'insertion des donnees ----------------- */
         // \App\Models\User::factory()->create([

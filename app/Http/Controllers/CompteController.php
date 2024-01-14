@@ -52,7 +52,6 @@ class CompteController extends Controller
         // dd($request->name);
         // $users = User::all();
         // Compte::create($request->post());
-
       // Valider les champs du formulaire
     // $validatedData = $request->validate([
     //     'name' => 'required|string|between:3,30',
@@ -60,22 +59,32 @@ class CompteController extends Controller
     //     'biography' => 'required|string|max:255',
     //     'password' => 'required|between:8,50|confirmed',
     // ]);
-
-    // $hashedPassword = Hash::make($request->input('password'));
-
-
+    // $hashedPassword = Hash::make($request->input('password'));3
     // $formFields = $request->validated();
-    // dd($formFields);
+    // Compte::create([
+    //         'name' => $request->input('name'),
+    //         'email' => $request->input('email'),
+    //         'biography' =>  $request->input('biography'),
+    //         'password' => Hash::make($request->input('password')),
+    //     ]);
+    // // Get the uploaded file
+    // $imageFile = $request->file('image');
+    // // Define the new file name
+    // $newFileName = 'custom_name.' . $imageFile->getClientOriginalExtension();
+    // // Store the file with the new name in the 'compte' directory within the 'public' disk
+    // $formFields['image'] = $imageFile->storeAs('compte', $newFileName, 'public');
+    // dd($formFields['password']);
+        // dd($request->id);
 
-    Compte::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'biography' =>  $request->input('biography'),
-            'password' => Hash::make($request->input('password')),
-        ]);
-
+            $formFields = $request->validated();
+            $formFields['password'] = Hash::make($request->input('password'));
+            $cleanedName = str_replace(' ', '_', $request->name);
+            $newFileName =$request->email . '_image.' . $request->file('image')->getClientOriginalExtension();
+            $formFields['image'] = $request->file('image')->storeAs('compte',$newFileName,'public');
+            Compte::create($formFields);
 
         return redirect()->route('comptes.index')->with('success','Votre compte est bien créé');
+
     }
 
 

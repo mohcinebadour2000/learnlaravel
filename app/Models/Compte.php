@@ -15,6 +15,7 @@ class Compte extends Model
         'email',
         'biography',
         'password',
+        'image',
         // Add other fields that you want to allow for mass assignment
     ];
 }

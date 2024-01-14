@@ -12,9 +12,13 @@
 </x-alert>
 @endif
 
-<form method="POST" action="{{ route('comptes.update',$compte->id) }}" class="row g-3 p-2">
+<form method="POST" action="{{ route('comptes.update',$compte->id) }}" class="row g-3 p-2" enctype="multipart/form-data">
     @csrf
     @method('PUT')
+    <div class="col-md-12 my-2">
+        <label for="formFile" class="form-label">Image</label>
+        <input class="form-control" name="image" type="file" id="formFile">
+    </div>
     <div class="col-md-12">
         <label for="name" class="form-label">New Full Name</label>
         <input type="text" class="form-control" id="name" name="name" value="{{ old('name',$compte->name) }}">

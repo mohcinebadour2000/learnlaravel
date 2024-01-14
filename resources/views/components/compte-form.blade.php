@@ -1,7 +1,7 @@
  @if ($errors->any())
      {{-- 1ER METHODE --}}
      <x-alert type="danger">
-        <h6>Errors:</h6>
+         <h6>Errors:</h6>
          <ul>
              @foreach ($errors->all() as $error)
                  <li>
@@ -23,7 +23,7 @@
             erroes here
         @endisset
     @endonce --}}
- <form method="POST" action="{{ route('comptes.store') }}" class="row g-3 p-2">
+ <form method="POST" action="{{ route('comptes.store') }}" class="row g-3 p-2" enctype="multipart/form-data">
      @csrf
      <div class="col-md-12">
          <label for="name" class="form-label">Full Name</label>
@@ -55,23 +55,27 @@
      </div>
 
      <div class="col-md-4">
-        <label for="password_confirmation" class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
-        {{-- @error('password')
+         <label for="password_confirmation" class="form-label">Confirm Password</label>
+         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+         {{-- @error('password')
             <div class="text-danger">
                 {{ $message }}
             </div>
         @enderror --}}
-    </div>
+     </div>
 
-     <div class="mb-3">
+     <div class="col-md-12">
          <label for="exampleFormControlTextarea1" class="form-label">Biographie</label>
-         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="biography" >{{ old('biography') }}</textarea>
+         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="biography">{{ old('biography') }}</textarea>
          {{-- @error('biography')
              <div class="text-danger">
                  {{ $message }}
              </div>
          @enderror --}}
+     </div>
+     <div class="col-md-12 my-2">
+         <label for="formFile" class="form-label">Image</label>
+         <input class="form-control" name="image" type="file" id="formFile">
      </div>
      <div class="col-12 my-2 d-grid">
          <button class="btn btn-primary btn-block" type="submit">Ajouter</button>
