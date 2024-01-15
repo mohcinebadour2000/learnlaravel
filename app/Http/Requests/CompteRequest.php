@@ -27,7 +27,7 @@ class CompteRequest extends FormRequest
             'email' => 'required|email',
             'biography' => 'required|string|max:255',
             'password' => 'required|between:8,50|confirmed',
-            'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:10240',
+            'image' => 'image|mimes:png,jpg,jpeg,svg|max:10240',
         ];
     }
 }

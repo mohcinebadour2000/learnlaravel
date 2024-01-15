@@ -78,10 +78,15 @@ class CompteController extends Controller
 
             $formFields = $request->validated();
             $formFields['password'] = Hash::make($request->input('password'));
-            $cleanedName = str_replace(' ', '_', $request->name);
-            $newFileName =$request->email . '_image.' . $request->file('image')->getClientOriginalExtension();
-            $formFields['image'] = $request->file('image')->storeAs('compte',$newFileName,'public');
+            if($request->hasFile('image')){
+                $formFields['image'] = $request->file('image')->store('compte','public');
+            }
             Compte::create($formFields);
+
+            // $formFields['image'] = $request->file('image')->store('compte','public');
+            // $cleanedName = str_replace(' ', '_', $request->name);
+            // $newFileName =$request->email . '_image.' . $request->file('image')->getClientOriginalExtension();
+            // $formFields['image'] = $request->file('image')->storeAs('compte',$newFileName,'public');
 
         return redirect()->route('comptes.index')->with('success','Votre compte est bien créé');
 
@@ -102,10 +107,18 @@ class CompteController extends Controller
     public function update(CompteRequest $request,Compte $compte){
 
         $formFields = $request->validated();
+
+        if($request->hasFile('image')){
+            $formFields['image'] = $request->file('image')->store('compte','public');
+        }
+
+
         $formFields['password'] = Hash::make($request->input('password'));
         $compte->fill($formFields)->save();
         return redirect()->route('comptes.show',$compte->id)->with('success','Compte est bien modifiée.');
     }
+
+
 
 
 

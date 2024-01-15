@@ -1,9 +1,8 @@
 <div class="col-sm-4">
     <div class="card m-3" style="width: 18rem;">
-{{-- {{ $compte->image }} --}}
+        {{-- {{ $compte->image }} --}}
 
-        <img src="{{ asset('/'.$compte->image) }}" class="card-img-top" alt="Title"
-            style="height: 200px">
+        <img src="{{ asset('storage/' . $compte->image) }}" class="card-img-top" alt="Title">
 
 
         <div class="card-body">
