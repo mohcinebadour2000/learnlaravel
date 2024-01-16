@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('comptes', function (Blueprint $table) {
-            $table->string('image',150)->after('biography')->nullable();
+        Schema::create('publications', function (Blueprint $table) {
+            $table->id();
+            $table->string('titre',150);
+            $table->text('text');
+            $table->string('image')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('comptes', function (Blueprint $table) {
-            $table->dropColumn('image');;
-        });
+        Schema::dropIfExists('publications');
     }
 };

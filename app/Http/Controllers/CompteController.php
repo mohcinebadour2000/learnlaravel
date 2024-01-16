@@ -83,6 +83,8 @@ class CompteController extends Controller
             }
             Compte::create($formFields);
 
+
+
             // $formFields['image'] = $request->file('image')->store('compte','public');
             // $cleanedName = str_replace(' ', '_', $request->name);
             // $newFileName =$request->email . '_image.' . $request->file('image')->getClientOriginalExtension();

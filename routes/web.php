@@ -24,102 +24,32 @@ use App\Http\Controllers\informationsController;
 |
 */
 
+// Route::name('comptes.')->prefix('comptes')->group(function(){
+//     Route::controller(CompteController::class)->group(function(){
+//         Route::get('/','index')->name('index');
+//         Route::get('/create','create')->name('create');
+//         Route::post('/','store')->name('store');
+//         Route::delete('/{compte}','destroy')->name('destroy');
+//         Route::get('/{compte}/edit','edit')->name('edit');
+//         Route::put('/{compte}','update')->name('update');
+//         Route::get('/{compte}','show')->where('compte','\d+')->name('show');
+//     });
+// });
+
+
+Route::resource('comptes', CompteController::class);
+
+
+
+
+
 
 
 Route::get('/home', [homeController::class, 'index'])->name('homepage');
-
-
-// ----------------------------------
 Route::get('/signin', [LoginController::class, 'show'])->name('login.show');
-
 Route::post('/signin', [LoginController::class, 'signin'])->name('signin');
-
-
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-// ----------------------------------
-
-
-Route::get('/comptes', [CompteController::class, 'index'])->name('comptes.index');
-
-
-Route::delete('/comptes/{compte}', [CompteController::class, 'destroy'])->name('comptes.destroy');
-
-
-Route::get('/comptes/{compte}/edit', [CompteController::class, 'edit'])->name('comptes.edit');
-
-
-Route::put('/comptes/{compte}', [CompteController::class, 'update'])->name('comptes.update');
-
-
-
-
-Route::get('/comptes/{compte}', [CompteController::class, 'show'])
-->where('compte','\d+')
-->name('comptes.show');
-
-
-Route::get('/compte/create', [CompteController::class, 'create'])->name('comptes.create');
-
-Route::post('/compte/store', [CompteController::class, 'store'])->name('comptes.store');
-
-
-
 Route::get('/informations', [informationsController::class, 'index'])->name('informations.index');
-
-
-
-
-
-
-
-
-// Route::get('/test/{nom}/{age}',function(Request $request){
-//     return view('test',[
-//         'nom'=> $request->nom,
-//         'age'=> $request->age,
-//     ]);
-// });
-
-
-// Route::get('/salam/{nom}', function (Request $request) {
-//     // dd($request->nom);
-//     return view('salam',[
-//         'nomInView'=>$request->nom,
-//         //nomInView howa li kaydouz f hmtl , $request->nom howa li kanrequperiwh mn le lien (/salam/{nom})
-//     ]);
-// });
-
-
-// Route::get('/salam/{nom}', function ($nom) {
-//     return view('salam',[
-//         'nom'=>$nom,
-//     ]);
-// });
-
-// Route::get('/salam', function () {
-//     // $nom = "mohcine";
-//     return view('salam',[
-//         'nom' => 'badour',
-//         'prenom' => 'mohcine',
-//         'cours' => ['PHP','JAVASCRIPT','JAVA','PYTHON'],
-//     ]);
-// });
-
-
-
-// Route::view('/mohcine','welcome');
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
