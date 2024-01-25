@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('publications', function (Blueprint $table) {
-            $table->id();
-            $table->string('titre',150);
-            $table->text('body');
-            $table->string('image')->nullable();
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('publications', function (Blueprint $table) {
+            $table->unsignedBigInteger('compte_id');
+            $table->foreign('compte_id')->references('id')->on('comptes')->cascadeOnDelete();
         });
     }
 
@@ -26,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('publications');
+        Schema::table('publications', function (Blueprint $table) {
+            $table->dropColumn('compte_id');
+        });
     }
 };

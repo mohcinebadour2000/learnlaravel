@@ -7,26 +7,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">home</a>
-                </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('comptes.index') }}">compte</a>
+                    <a class="nav-link" href="{{ route('comptes.index') }}">Tous les profiles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('informations.index') }}">informations</a>
+                    <a class="nav-link" href="{{ route('publications.index') }}">Tous les publication</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('comptes.create') }}">Ajouter un profile</a>
                 </li>
-
-                {{-- @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
-                    </li>
-                @endauth--}}
 
                 @guest
                     <li class="nav-item">
@@ -34,6 +25,25 @@
                     </li>
                 @endguest
 
+                {{-- @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('publications.create') }}">Ajouter un publication</a>
+                    </li>
+                @endauth --}}
+
+
+                {{-- <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">home</a>
+                                </li> --}}
+                {{-- <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('informations.index') }}">informations</a>
+                                </li> --}}
+
+                {{-- @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                    </li>
+                @endauth --}}
 
             </ul>
 
@@ -44,7 +54,9 @@
                         <b>{{ ucfirst(auth()->user()->name) }}</b>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{ route('logout') }}"> {{ __("Deconnexion") }} </a>
+                        <a class="dropdown-item" href="{{ route('publications.create') }}">{{ __('Ajouter un publication') }} </a>
+                        <a class="dropdown-item" href="{{ route('comptes.show',auth()->user()->id) }}">{{ __('Voir le profile') }} </a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"> {{ __('Deconnexion') }} </a>
                     </div>
                 </div>
             @endauth

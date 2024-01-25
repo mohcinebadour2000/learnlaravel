@@ -7,8 +7,7 @@
         @endforeach
     </div>
 
-
-    {{ $comptes->links() }}
+{{ $comptes->links() }}
 
 
 

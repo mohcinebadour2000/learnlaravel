@@ -14,14 +14,19 @@ use App\Http\Requests\CompteRequest;
 
 class CompteController extends Controller
 {
+
+    // public function __construct() {
+    //     $this->middleware('auth')->except(['create']);
+    //     // $this->middleware('auth')->only(['create']);
+    // }
+
     //
     public function index(){
 
     //    $comptes = Compte::all();
         //   $comptes = DB::table('comptes')->simplePaginate(15);
 
-
-       $comptes = Compte::paginate(9);
+       $comptes = Compte::latest()->paginate(9);
 
         return view('compte.comptes',compact('comptes'));
     }

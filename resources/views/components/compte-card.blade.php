@@ -1,8 +1,9 @@
 <div class="col-sm-4">
     <div class="card m-3" style="width: 18rem;">
         {{-- {{ $compte->image }} --}}
-
-        <img src="{{ asset('storage/' . $compte->image) }}" class="card-img-top" alt="Title">
+        <img class="rounded-circle shadow-1-strong  mx-auto my-1" src="{{ asset('storage/' . $compte->image) }}"
+            alt="{{ 'image of ' . $compte->name . ' not loaded yet.' }}" width="150" height="150" />
+        {{-- <img src="{{ asset('storage/' . $compte->image) }}" width="160" class="img-fluid mx-auto my-1" alt="Title"> --}}
 
 
         <div class="card-body">
@@ -29,27 +30,24 @@
             @endauth --}}
 
         </div>
-
         @auth
-            <div class="card-foot border-top px-2 py-1 bg-light" style="z-index: 9;">
-                @if (auth()->user()->email === $compte->email)
-                    <span class="badge bg-success float-end p-2 ">{{ __('Admin') }}</span>
-                @else
+            @if (auth()->user()->id === $compte->id)
+                <div class="card-foot border-top px-2 py-1 bg-light" style="z-index: 9;">
                     <form method="POST" action="{{ route('comptes.destroy', $compte->id) }}">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger btn-sm float-end" type="submit"
-                            onclick="return confirm('Are you sure you want to delete this user?')">{{ __('delete') }}</button>
+                            onclick="return confirm('Are you sure you want to delete this user?')"><i
+                                class="fas fa-trash-alt"></i></button>
                     </form>
-
                     <form method="GET" action="{{ route('comptes.edit', $compte->id) }}">
                         @csrf
-                        <button class="btn btn-warning btn-sm float-end mx-1 text-white"
-                            type="submit">{{ __('update') }}</button>
+                        <button class="btn btn-warning btn-sm float-end mx-1 text-white" type="submit"><i
+                                class="fas fa-pencil-alt"></i></button>
                     </form>
-                @endif
-            </div>
+                </div>
+            @endif
         @endauth
-
+        
     </div>
 </div>

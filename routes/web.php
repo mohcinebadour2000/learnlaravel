@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\CompteController;
+use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\informationsController;
 
@@ -24,6 +25,8 @@ use App\Http\Controllers\informationsController;
 |
 */
 
+
+
 // Route::name('comptes.')->prefix('comptes')->group(function(){
 //     Route::controller(CompteController::class)->group(function(){
 //         Route::get('/','index')->name('index');
@@ -38,14 +41,17 @@ use App\Http\Controllers\informationsController;
 
 
 Route::resource('comptes', CompteController::class);
+Route::resource('publications', PublicationController::class);
 
 
 
-
-
+Route::get('/google',function(){
+    return redirect()->away('https://www.google.com/');
+});
 
 
 Route::get('/home', [homeController::class, 'index'])->name('homepage');
+
 Route::get('/signin', [LoginController::class, 'show'])->name('login.show');
 Route::post('/signin', [LoginController::class, 'signin'])->name('signin');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
